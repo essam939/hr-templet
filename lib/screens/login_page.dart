@@ -1,9 +1,8 @@
 import 'package:dgtera/persistence/api_provider.dart';
+import 'package:dgtera/screens/tabs_page.dart';
 import 'package:dgtera/widget/custom.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../assets.dart';
-import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -34,13 +33,10 @@ class _LoginPageState extends State<LoginPage> {
                     key: _formKey,
                     child: Column(
                       children: [
-                        Text("Login",style: TextStyle(color: Colors.grey[700],fontSize: 20),),
-                        SizedBox(height: 30,),
-                        CircleAvatar(
-                          maxRadius: 90,
-                          backgroundColor: Colors.grey[300],
-                          child: Icon(FontAwesomeIcons.userAlt,size: 60,color: Colors.grey[700],),
-                        ),
+                        SizedBox(height: 20,),
+                        Text("Login",style: TextStyle(color: Colors.grey[700],fontSize: 22,fontWeight: FontWeight.bold),),
+                        SizedBox(height: 80,),
+                    Image.asset(assets["logoAr"]),
                     SizedBox(height: height+20,),
                     buildTextFormField(hint: "URL.com",max: 32,type: TextInputType.url,customController: urlController),
                     SizedBox(height: height,),
@@ -50,29 +46,22 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(height: height+10,),
                      Row(
                        children: [
-                         Expanded(flex: 5,child: RaisedButton(
-                           color: Colors.orange,
+                         SizedBox(height: 50,width: MediaQuery.of(context).size.width/1.2,child: RaisedButton(
+                           color: Colors.deepPurple,
                            onPressed: ()async{
-                             if (_formKey.currentState.validate()) {
+                             if (!_formKey.currentState.validate()) {
                                API().login(urlController.text.trim(), emailController.text.trim(), passwordController.text.trim());
-                             await Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomePage()));
+                             await Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>TapsPage()));
                              }
                            },
-                           child: Text("Login",style: TextStyle(color: Colors.white),),
-                         )),
-                         SizedBox(width: 20,),
-                         Expanded(flex: 2,child: RaisedButton(
-                           child: Icon(Icons.fingerprint,color: Colors.white,),
-                           onPressed: (){
-                           },
-                           color: Colors.orange,
+                           child: Text("Login",style: TextStyle(color: Colors.white,fontSize: 18),),
                          )),
                        ],
                      ),
                       ],
                     ),
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height/4,),
+                  SizedBox(height: MediaQuery.of(context).size.height/3.5,),
                   Image.asset(assets["logoImage"],width: 150,height: 50,)
                 ],
               ),

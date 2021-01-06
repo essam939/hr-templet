@@ -5,8 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 class API{
   Future login(String url,String email,String password) async {
     SharedPreferences _pref =await SharedPreferences.getInstance();
+    Map<String, String> headers = {'Content-type': 'application/json', 'Accept': 'application/json',};
     Map <String,dynamic> body={"url":url, "login":email, "password":password};
-    final response = await http.post("https://$url/web/session/authenticate",body: body);
+    final response = await http.post("https://$url/web/session/authenticate",body: body,headers:headers );
     print(response.body.toString());
     if (response.statusCode == 200) {
       _pref.setString("Domain", url);

@@ -30,7 +30,10 @@ dependencies:
   cupertino_icons: ^1.0.0
   font_awesome_flutter: ^8.11.0
   shared_preferences: ^0.5.12+4
+  location: ^3.2.1
+  google_maps_flutter: ^1.0.6
   http: ^0.12.2
+  slider_button: ^0.6.0
 
 dev_dependencies:
   flutter_test:
