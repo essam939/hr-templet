@@ -1,4 +1,4 @@
-import 'dart:async';
+import 'dart:async'; 
 import 'dart:math';
 import 'package:dgtera/widget/custom.dart';
 import 'package:dgtera/widget/pin_ifo.dart';
